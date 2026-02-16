@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -6,7 +7,6 @@ var logger = require('morgan');
 var http = require('http');
 var debug = require('debug')('mobilebackend:server');
 const connectDB = require('./database/mongoose'); 
-require('dotenv').config();
 
 var app = express();
 
