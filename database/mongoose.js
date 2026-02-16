@@ -5,8 +5,9 @@ const mongoURI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/mobileApp";
 const connectDB = async () => {
   try {
     await mongoose.connect(mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      // Mongoose 6+ uses sensible defaults; specify helpful options instead
+      serverSelectionTimeoutMS: 10000, // 10s timeout for initial server selection
+      family: 4, // use IPv4 to avoid potential IPv6 resolution/connect issues
     });
     console.log(`Mongoose connected to ${mongoURI}`);
   } catch (err) {
